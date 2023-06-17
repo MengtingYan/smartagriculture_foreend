@@ -7,6 +7,8 @@ import echarts from 'echarts'
 import img from './lib/img'
 import utils from "./lib/utils";
 import axios from "axios";
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.prototype.$echarts = function (el) {
     return echarts.init(el, null, {renderer: 'svg'})
@@ -16,6 +18,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$axios = axios
 Vue.use(iView);
 Vue.use(utils)
+Vue.use(ElementUI)
 new Vue({
   router,
   axios,

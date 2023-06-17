@@ -33,9 +33,21 @@
                     <canvas id="main" width="500" height="500"></canvas>
                     <canvas id="dot"></canvas>
                 </div>
+
+                <div style="display: flex">
+                    <div style="flex: 1"></div>
+                    <el-button type="text" @click="updataText1()">土壤湿度</el-button>
+                    <el-button type="text" @click="updataText2()">空气湿度</el-button>
+                    <el-button type="text" @click="updataText3()">光照强度</el-button>
+                    <el-button type="text" @click="updataText4()">温度</el-button>
+                    <el-button type="text" @click="updataText5()">土壤PH值</el-button>
+                    <div style="flex: 1"></div>
+                </div>
+
             </Col>
             <Col span="1"/>
             <Col span="7">
+
               <div class="list_right">
                 <div class="right">
                   <span class='title'><span class="title-8">温度</span></span>
@@ -81,6 +93,10 @@ export default {
   },
   data() {
     return {
+        text:'当前',
+        number:0,
+        color1:'#209ADF',
+        color2:'#2C50B1',
       ph:[],
       light:[],
       temperature:[],
@@ -125,6 +141,36 @@ export default {
     this.getData()
   },
   methods: {
+      updataText1(){
+          this.text="当前土壤湿度"
+          this.number=64
+          this.color1="#96b0b6"
+          this.color2="#465a5c"
+      },
+      updataText2(){
+          this.text="当前空气湿度"
+          this.number=25
+          this.color1="#90ceee"
+          this.color2="#42b0e2"
+      },
+      updataText3(){
+          this.text="当前光照强度"
+          this.number=76
+          this.color1="#eabdb5"
+          this.color2="#e76652"
+      },
+      updataText4(){
+          this.text="当前温度"
+          this.number=27.1
+          this.color1="#eecda4"
+          this.color2="#efb46c"
+      },
+      updataText5(){
+          this.text="当前土壤PH值"
+          this.number=6.8
+          this.color1="#b3aa91"
+          this.color2="#5e4f3d"
+      },
     async getData() {
       try {
         const response = await Promise.all([
@@ -284,7 +330,7 @@ export default {
             context.closePath();
             context.fill();
             //内圆
-            let nowRange = 64;
+            let nowRange = this.number;
             context.save();
             this.drawCircle(context);
             this.drawSin(this.xOffset, context, nowRange);
@@ -306,7 +352,7 @@ export default {
         },
     drawCircle(ctx) { // 画圆 中心圆
             ctx.beginPath();
-            ctx.fillStyle = '#209ADF';
+            ctx.fillStyle = this.color1;
             ctx.arc(this.circle.x, this.circle.y, 120, 0, 2 * Math.PI);
             ctx.fill();
             ctx.beginPath();
@@ -336,7 +382,7 @@ export default {
             ctx.lineTo(axisLength, mH);
             ctx.lineTo(sX, mH);
             ctx.lineTo(points[0][0], points[0][1]);
-            ctx.fillStyle = '#2C50B1';
+            ctx.fillStyle = this.color2;
             ctx.fill();
 
             ctx.restore();
@@ -348,7 +394,7 @@ export default {
             let size = 50;
             ctx.font = size + 'px Microsoft Yahei';
             ctx.textAlign = 'center';
-            ctx.fillStyle = "#95EFFF";
+            ctx.fillStyle = "#ffffff";
             ctx.fillText(nowRange + '%', 120, 120 - size / 2);
             ctx.restore();
             ctx.save()
@@ -356,8 +402,8 @@ export default {
             ctx.translate(130, 130);
             ctx.font = size + 'px Microsoft Yahei';
             ctx.textAlign = 'center';
-            ctx.fillStyle = "#95EFFF";
-            ctx.fillText("当前土壤湿度", 120, 120 + size);
+            ctx.fillStyle = "#ffffff";
+            ctx.fillText(this.text, 120, 120 + size);
             ctx.restore();
         },
     // 旋转的文字
@@ -369,7 +415,7 @@ export default {
                 character; // 当前要画的文字
             let arr = string.split(':')
             context.save();
-            context.fillStyle = '#fff';
+            context.fillStyle = '#ffffff';
             context.font = '12px 微软雅黑 ';
             context.textAlign = 'center';
             context.textBaseline = 'middle';
