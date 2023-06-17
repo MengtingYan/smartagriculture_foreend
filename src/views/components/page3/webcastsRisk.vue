@@ -4,53 +4,31 @@
 
 <script>
 export default {
-    name: 'webcastsRisk',
+    props: ['pie'],
     data() {
         return {}
     },
     methods: {
-        // 网播风险分析
         setWebcasts() {
             let option = {
-
-                title: {
-                    text: '重点用户关注排行',
-                    textStyle: {
-                        color: "#fff",
-                        fontSize: 12
-                    },
-                    top: '4%',
-                    left: '4%'
-                },
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-                    }
-                },
                 legend: {
                     data: [
-                        {name: '抖音', icon: 'circle'},
-                        {name: '快手', icon: 'circle'},
-                        {name: '花椒', icon: 'circle'},
-                        {name: '其他', icon: 'circle'},
+                        {name: '7', icon: 'circle'},
+                        {name: '6.9', icon: 'circle'},
+                        {name: '6.8', icon: 'circle'},
+                        {name: '6.7', icon: 'circle'},
+                        {name: '6.6',icon: 'circle'},
+                        {name: '6.5',icon: 'circle'}
                     ],
                     gridIndex: 3,
-                    right: "5%",
+                    right: "10%",
                     top: "6%",
-                    itemWidth: 7,
-                    itemHeight: 7,
+                    itemWidth: 15,
+                    itemHeight: 15,
                     textStyle: {
                         color: '#00CCFF',
-                        fontSize: 10
+                        fontSize: 15
                     }
-                },
-                grid: {
-                    top: '15%',
-                    left: '3%',
-                    right: '50%',
-                    bottom: '5%',
-                    containLabel: true
                 },
                 xAxis: {
                     type: 'value',
@@ -72,90 +50,22 @@ export default {
                         padding: [1, 3, 1, 3]
                     },
                     inverse: true,
-                    data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                 },
                 series: [
                     {
-                        name: '抖音',
-                        type: 'bar',
-                        stack: '总量',
-                        barWidth: 8,
-                        itemStyle: {
-                            color: '#142AFE',
-                            barBorderRadius: [0, 8, 8, 0]
-                        },
-                        label: {
-                            normal: {
-                                show: false,
-
-                                position: 'insideRight'
-                            }
-                        },
-                        data: [100, 90, 80, 70, 60, 50, 40, 30, 20, 15]
-                    },
-                    {
-                        name: '快手',
-                        type: 'bar',
-                        stack: '总量',
-                        barWidth: 8,
-                        itemStyle: {
-                            color: '#1456FE',
-                            barBorderRadius: [0, 8, 8, 0]
-                        },
-                        label: {
-                            normal: {
-                                show: false,
-                                position: 'insideRight'
-                            }
-                        },
-                        data: [100, 90, 80, 70, 60, 50, 40, 30, 20, 15]
-                    },
-                    {
-                        name: '花椒',
-                        type: 'bar',
-                        stack: '总量',
-                        barWidth: 8,
-                        itemStyle: {
-                            color: '#1493FE',
-                            barBorderRadius: [0, 8, 8, 0]
-                        },
-                        label: {
-                            normal: {
-                                show: false,
-                                position: 'insideRight'
-                            }
-                        },
-                        data: [100, 90, 80, 70, 60, 50, 40, 30, 20, 15]
-                    },
-                    {
-                        name: '其他',
-                        type: 'bar',
-                        barWidth: 8,
-                        stack: '总量',
-                        itemStyle: {
-                            color: '#00CCFF',
-                            barBorderRadius: [0, 8, 8, 0]
-                        },
-                        label: {
-                            normal: {
-                                show: false,
-                                position: 'insideRight'
-                            }
-                        },
-                        data: [100, 90, 80, 70, 60, 50, 40, 30, 20, 15]
-                    },
-                    {
                         type: 'pie',
+                        right:"10%",
                         radius: ['20%', '21%'],
                         center: ['72%', '60%'],
                         data: [{value: '1'}],
                         label: {show: false},
                         itemStyle: {
-                            color: '#7D7DA2'
+                            color: '#7D7DA2',
                         }
                     },
                     {
                         type: 'pie',
+                        right:"10%",
                         radius: ['40%', '65%'],
                         roseType: 'area',
                         center: ['72%', '60%'],
@@ -167,12 +77,13 @@ export default {
                                 padding: [0, -30],
                                 formatter: '{c} \n\n',
                                 position: 'outside',
-                                color: '#fff'
+                                color: '#fff',
+                                fontSize:16,
                             },
                             emphasis: {
                                 show: true,
                                 textStyle: {
-                                    fontSize: '30',
+                                    fontSize: '36',
                                     fontWeight: 'bold'
                                 }
                             }
@@ -181,22 +92,16 @@ export default {
                             show: true,
                             length2: 30,
                             lineStyle: {
-                                //color:["#408BE8",'#FE405C',"#3E3E7F","#FFC740"]
+                              width:2
                             },
-
                         },
                         itemStyle: {
                             color: function (params) {
-                                let corList = ["#142AFE", '#3FA0FF', "#00CCFF", "#1456FE"];
+                                let corList = ["#eeda83","#d08484","#7866e0", "#77c27a","#00CCFF",'#d29be0'];
                                 return corList[params.dataIndex]
-                            }
+                            },
                         },
-                        data: [
-                            {value: 535, name: '抖音'},
-                            {value: 310, name: '快手'},
-                            {value: 135, name: '花椒'},
-                            {value: 254, name: '其他'},
-                        ]
+                        data: this.pie
                     }
                 ]
             };
@@ -216,5 +121,6 @@ export default {
 <style lang="less" scoped>
 .webcastsRisk {
     height: 100%;
+  margin-left: -150px;
 }
 </style>

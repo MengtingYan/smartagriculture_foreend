@@ -4,22 +4,19 @@
 
 <script>
 export default {
-    name: '',
-    props: {
-        selectRangeDate: Array
-    },
+    props: ['tem'],
     data() {
-        return {}
+        return {
+          selectRangeDate: [
+            [5, 29], [5, 30], [5, 31], [6, 1], [6, 2], [6, 3], [6, 4], [6, 5], [6, 6],
+            [6, 7], [6, 8], [6, 9], [6, 10], [6, 11], [6, 12], [6, 13], [6, 14], [6, 15], [6, 16], [6, 17]
+          ]
+        }
     },
     methods: {
         setData(type) {
             let arr = [];
             switch (type) {
-                case 'x':
-                    for (let i = 0; i < this.selectRangeDate.length; i++) {
-                        arr.push(this.selectRangeDate[i][1] + "." + this.selectRangeDate[i][2])
-                    }
-                    break;
                 case 's' :
                     for (let i = 0; i < this.selectRangeDate.length; i++) {
                         arr.push((Math.random() * 250).toFixed(0))
@@ -58,6 +55,7 @@ export default {
                     itemHeight: 7,
                     textStyle: {
                         color: '#5CB1C1',
+                        fontSize: 15
                     }
                 },
                 xAxis: {
@@ -65,7 +63,7 @@ export default {
                     boundaryGap: false,
                     axisLabel: {
                         color: '#61B9C8',
-                        fontSize: 10,
+                        fontSize: 12,
                     },
                     axisLine: {
                         symbol: ['none', 'arrow'],
@@ -80,14 +78,13 @@ export default {
                         inside: true
                     },
                     z: 2,
-                    data: this.setData('x')
+                    data: this.selectRangeDate.map(date => `${date[0]}/${date[1]}`)
                 },
                 yAxis:
                     {
                         type: 'value',
-                        interval: 50,
-                        min: 0,
-                        max: 400,
+                        min: 20,
+                        max: 31,
                         splitNumber: 7,
                         axisLine: {
                             symbol: ['none', 'arrow'],
@@ -99,12 +96,12 @@ export default {
                         axisLabel: {
                             color: '#61B9C8',
                             showMaxLabel: false,
-                            fontSize: 10
+                            fontSize: 12
                         },
                         splitLine: {
                             show: false,
                         },
-                        name: '(个)',
+                        name: '(℃)',
                         nameGap: -10,
                         nameTextStyle: {
                             color: '#61B9C8',
@@ -115,11 +112,11 @@ export default {
                     },
 
                 series: [{
-                    name: '朋友圈个数',
+                    name: '温度',
                     type: 'line',
                     symbol: 'none',
                     smooth: true,
-                    data: this.setData('s'),
+                    data: this.tem,
                     lineStyle: {
                         width: 1,
                         color:{
@@ -180,7 +177,7 @@ export default {
 
 <style lang="less" scoped>
 .singleAreaChart {
-    width: 100%;
+    width: 145%;
     height: 100%;
 }
 </style>

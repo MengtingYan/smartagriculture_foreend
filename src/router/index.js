@@ -10,13 +10,18 @@ const router = new Router({
     routes: [
         {
             path: '/',
-            redirect: '/page1'
+            redirect: '/page'
         },
         {
             path: '/',
             name: 'home',
             component: home,
             children: [
+                {
+                    path: '/page',
+                    name: 'page',
+                    component: () => import('@/views/page')
+                },
                 {
                     path: '/page1',
                     name: 'page1',

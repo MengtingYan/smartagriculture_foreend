@@ -3,6 +3,9 @@
         <div class="header">
             <div class="selectRange">
                 <Menu mode="horizontal" @on-select="(name) =>$router.push(name)" :active-name="$route.name">
+                    <MenuItem name="page">
+                        page
+                    </MenuItem>
                     <MenuItem name="page1">
                         page1
                     </MenuItem>
@@ -15,26 +18,10 @@
                 </Menu>
             </div>
             <div class="header-title">
-                大数据可视化平台
+                智慧农业可视化平台
             </div>
             <div class="selectRange">
                 <Menu mode="horizontal" @on-select="handleSelect" :active-name="activeName">
-                    <MenuItem name="day">
-                        昨日
-                    </MenuItem>
-                    <MenuItem name="week">
-                        近一周
-                    </MenuItem>
-                    <MenuItem name="month">
-                        近一月
-                    </MenuItem>
-                    <Submenu name="4">
-                        <template slot="title">
-                            <Icon type="ios-settings-outline" size="24" color="#60C2D4"/>
-                        </template>
-                        <MenuItem name="filter">筛选</MenuItem>
-                    </Submenu>
-
                 </Menu>
             </div>
         </div>

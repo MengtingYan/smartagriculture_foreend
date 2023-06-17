@@ -4,7 +4,12 @@
 
 <script>
 export default {
-    name: '',
+  props: {
+    chartData: {
+      type: Array,
+      required: true
+    }
+  },
     data() {
         return {}
     },
@@ -29,6 +34,7 @@ export default {
                     itemHeight: 7,
                     textStyle: {
                         color: '#5CB1C1',
+                      fontSize: 15
                     }
                 },
                 grid: {
@@ -53,19 +59,20 @@ export default {
                         axisTick: {show: false},
                         axisLabel: {
                             color: '#61B9C8',
-                            fontSize: 10,
-                            interval: 0,
+                            fontSize: 11,
+                            interval: 1,
                         },
-                        data: ["1部", "2部", "3部", "4部", "5部", "6部", "7部", "8部", "9部", "10部"]
+                        data: ["5.29", "5.30", "5.31", "6.1", "6.2", "6.3", "6.4", "6.5", "6.6", "6.7","6.8",
+                        "6.9","6.10","6.11","6.12","6.13","6.14","6.15","6.16","6.17"]
                     }
                 ],
                 yAxis: [
                     {
                         type: 'value',
                         scale: true,
-                        max: 400,
-                        min: 0,
-                        interval: 50,
+                        max: 90,
+                        min: 10,
+                        interval: 10,
                         axisLine: {
                             symbol: ['none', 'arrow'],
                             symbolSize: [6, 6],
@@ -76,16 +83,16 @@ export default {
                         axisLabel: {
                             color: '#61B9C8',
                             showMaxLabel: false,
-                            fontSize: 10
+                            fontSize: 12
                         },
                         splitLine: {
                             show: false,
                         },
-                        name: '(小时)',
+                        name: '(klux)',
                         nameGap: -5,
                         nameTextStyle: {
                             color: '#61B9C8',
-                            fontSize: 9,
+                            fontSize: 11,
                             align: 'right',
                             padding: [0, 4, 0, 0]
                         },
@@ -93,7 +100,7 @@ export default {
                 ],
                 series: [
                     {
-                        name: '办公时长',
+                        name: '光照强度',
                         type: 'bar',
                         itemStyle: {
                             color:{
@@ -115,7 +122,7 @@ export default {
                         },
                         barWidth: 10,
                         barCategoryGap: 10,
-                        data: [213, 190, 137, 99, 63, 196, 248, 212, 248, 112]
+                        data: this.chartData
                     },
                 ]
             };
@@ -134,7 +141,7 @@ export default {
 
 <style lang="less" scoped>
 .barChart {
-    width: 100%;
+    width: 160%;
     height: 100%;
 }
 </style>
