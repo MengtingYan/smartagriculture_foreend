@@ -79,9 +79,9 @@
 import api from '@/api/agriculture'
 
 const areaChart = ()=> import('./components/areaChart');
-const singleAreaChart = () => import('./components/page2/singleAreaChart');
-const barChart = () => import('./components/page2/barChart');
-const webcastsRisk = ()=> import('./components/page3/webcastsRisk');
+const singleAreaChart = () => import('./components/singleAreaChart');
+const barChart = () => import('./components/barChart');
+const webcastsRisk = ()=> import('./components/webcastsRisk');
 
 export default {
   name: 'page',
