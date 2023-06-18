@@ -97,6 +97,8 @@ export default {
         number:0,
         color1:'#209ADF',
         color2:'#2C50B1',
+        select:0,
+        count:0,
       ph:[],
       light:[],
       temperature:[],
@@ -142,34 +144,39 @@ export default {
   },
   methods: {
       updataText1(){
-          this.text="当前土壤湿度"
-          this.number=64
+          this.text="当前土壤湿度(%)"
           this.color1="#96b0b6"
           this.color2="#465a5c"
+          this.select=1
+          this.number=Math.floor(Math.random() * (71 - 60)) + 60+"%"
       },
       updataText2(){
-          this.text="当前空气湿度"
-          this.number=25
+          this.text="当前空气湿度(%)"
           this.color1="#90ceee"
           this.color2="#42b0e2"
+          this.select=2
+          this.number=Math.floor(Math.random() * (31 - 18)) + 18+"%"
       },
       updataText3(){
-          this.text="当前光照强度"
-          this.number=76
+          this.text="当前光照强度(klux)"
           this.color1="#eabdb5"
           this.color2="#e76652"
+          this.select=3
+          this.number=Math.floor(Math.random() * (81 - 40)) + 40+"klux"
       },
       updataText4(){
-          this.text="当前温度"
-          this.number=27.1
+          this.text="当前温度(℃)"
           this.color1="#eecda4"
           this.color2="#efb46c"
+          this.select=4
+          this.number=(Math.floor(Math.random() * 101) / 10) + 20+"℃"
       },
       updataText5(){
           this.text="当前土壤PH值"
-          this.number=6.8
           this.color1="#b3aa91"
           this.color2="#5e4f3d"
+          this.select=5
+          this.number=(Math.floor(Math.random() * 6) / 10) + 6.5
       },
     async getData() {
       try {
@@ -395,7 +402,7 @@ export default {
             ctx.font = size + 'px Microsoft Yahei';
             ctx.textAlign = 'center';
             ctx.fillStyle = "#ffffff";
-            ctx.fillText(nowRange + '%', 120, 120 - size / 2);
+            ctx.fillText(nowRange, 120, 120 - size / 2);
             ctx.restore();
             ctx.save()
             size = 25;
@@ -469,6 +476,9 @@ export default {
         },
     },
   mounted() {
+      setInterval(() => {
+          this.count++;
+      }, 5000);
     this.centerBox = {
         width: document.querySelector('#circlePie').offsetWidth,
         height: document.querySelector('#circlePie').offsetHeight
@@ -506,7 +516,21 @@ export default {
       window.removeEventListener('resize', this.resizeFn)
       window.cancelAnimationFrame(this.animationFrame1)
       window.cancelAnimationFrame(this.animationFrame2)
-  }
+  },
+    watch: {
+        count() {
+            if(this.select ===1)
+                this.number=Math.floor(Math.random() * (71 - 60)) + 60
+            else if(this.select===2)
+                this.number=Math.floor(Math.random() * (31 - 18)) + 18
+            else if(this.select===3)
+                this.number=Math.floor(Math.random() * (81 - 40)) + 40
+            else if(this.select===4)
+                this.number=(Math.floor(Math.random() * 101) / 10) + 20;
+            else if(this.select===5)
+                this.number=(Math.floor(Math.random() * 6) / 10) + 6.5;
+        }
+    },
 }
 </script>
 
