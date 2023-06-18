@@ -148,28 +148,28 @@ export default {
           this.color1="#96b0b6"
           this.color2="#465a5c"
           this.select=1
-          this.number=Math.floor(Math.random() * (71 - 60)) + 60+"%"
+          this.number=Math.floor(Math.random() * (71 - 60)) + 60
       },
       updataText2(){
           this.text="当前空气湿度(%)"
           this.color1="#90ceee"
           this.color2="#42b0e2"
           this.select=2
-          this.number=Math.floor(Math.random() * (31 - 18)) + 18+"%"
+          this.number=Math.floor(Math.random() * (31 - 18)) + 18
       },
       updataText3(){
           this.text="当前光照强度(klux)"
           this.color1="#eabdb5"
           this.color2="#e76652"
           this.select=3
-          this.number=Math.floor(Math.random() * (81 - 40)) + 40+"klux"
+          this.number=Math.floor(Math.random() * (81 - 40)) + 40
       },
       updataText4(){
           this.text="当前温度(℃)"
           this.color1="#eecda4"
           this.color2="#efb46c"
           this.select=4
-          this.number=(Math.floor(Math.random() * 101) / 10) + 20+"℃"
+          this.number=(Math.floor(Math.random() * 101) / 10) + 20
       },
       updataText5(){
           this.text="当前土壤PH值"
