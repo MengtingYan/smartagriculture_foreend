@@ -3,18 +3,6 @@
         <div class="header">
             <div class="selectRange">
                 <Menu mode="horizontal" @on-select="(name) =>$router.push(name)" :active-name="$route.name">
-                    <MenuItem name="page">
-                        page
-                    </MenuItem>
-                    <MenuItem name="page1">
-                        page1
-                    </MenuItem>
-                    <MenuItem name="page2">
-                        page2
-                    </MenuItem>
-                    <MenuItem name="page3">
-                        page3
-                    </MenuItem>
                 </Menu>
             </div>
             <div class="header-title">
@@ -40,7 +28,6 @@
         <div class="page">
             <router-view v-if="flag" :selectRangeDate='selectRangeDate'></router-view>
         </div>
-
     </div>
 </template>
 
